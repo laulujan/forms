@@ -29,7 +29,7 @@
             <ul class="flex-outer">
                 <li>
                     <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" placeholder="Enter your first name here">
+                    <input type="text" id="first-name" placeholder="Enter your first name here" onblur="requeridos('first-name')" onchange="borrarLista()">
                 </li>
                 <li>
                     <label for="last-name">Last Name</label>
@@ -37,11 +37,11 @@
                 </li>
                 <li>
                     <label for="email">Email</label>
-                    <input type="text" id="email" placeholder="Enter your email here">
+                    <input type="text" id="email" placeholder="Enter your email here" onblur="requeridos('email'); validateEmail() " onchange="borrarLista()" onfocus="borrarLista()">
                 </li>
                 <li>
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password here">
+                    <input type="password" id="password" placeholder="Enter your password here" onblur="validPass()" onchange="borrarLista()">
                 </li>
                 <li>
                     <label for="phone">Phone</label>
@@ -66,12 +66,12 @@
                 </li>
                 <li>
                     <label for="comments">Comments</label>
-                    <textarea rows="6" id="comments" placeholder="Enter your comments here"></textarea>
+                    <textarea rows="6" id="comments" placeholder="Enter your comments here" onblur="requeridos('comments'); commentMax()" onchange="borrarLista()"></textarea>
                 </li>
                 <li class="error-list hidden">
                     <label>Error</label>
-                    <ul>
-                        <li>first name</li>
+                    <ul id="lista-error">
+
                     </ul>
                 </li>
                 <li>
