@@ -49,24 +49,139 @@
                 </li>
                 <li>
                     <p>Vehicle</p>
-                    <ul class="vehicle">
+                    <ul class="vehicle" onchange="borrarLista()">
                         <li>
-                            <input type="checkbox" id="car" name="car" value="car">
+                            <input type="checkbox" id="car" name="car" value="car" onclick="showHiddenSection('car-section')">
                             <label for="car">I have a Car</label>
+                            <section class="container" id="car-section" style="display: none;" >
+                                <form id="vehicle-form">
+                                <ul class="flex-outer">
+                                    <li id="make-car">
+                                        <label for="make">Make</label>
+                                        <textarea rows="4" id="car-make" placeholder="Enter your preferences here" 
+                                        onblur="vehicleIsRequired('make-car')" onchange="removeVehicleError('make-car')"></textarea>
+                                    </li>
+                                    <li id="model-car">
+                                        <label for="model">Model</label>
+                                        <input type="text" id="car-model">
+                                    </li>
+                                    <li>
+                                        <label>Color</label>
+                                        <select id="car-color">
+                                            <option value="black">Black</option>
+                                            <option value="white">White</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="red">Red</option>
+                                            <option value="yellow">Yellow</option>
+                                        </select>
+                                    </li>
+                                    <li id="doors">
+                                        <label for="doors">Doors</label>
+                                        <input type="number" id="car-doors" placeholder="1-6"
+                                        onblur="validateDoors()" onchange="removeVehicleError('doors')">
+                                    </li>
+                                </ul>
+                            </form>
+                            </section>
                         </li>
                         <li>
-                            <input type="checkbox" id="bike" name="bike" value="bike">
+                            <input type="checkbox" id="bike" name="bike" value="bike" onclick="showHiddenSection('bike-section')">
                             <label for="bike">I have a Bike</label>
+                            <section class="container" id="bike-section" style="display: none;">
+                                <form id="bike-form">
+                                <ul class="flex-outer">
+                                    <li id="make-bike">
+                                        <label for="make">Make</label>
+                                        <textarea rows="4" id="bike-make" placeholder="Enter your preferences here" onblur="vehicleIsRequired('make-bike')" onchange="removeVehicleError('make-bike')"></textarea>
+                                    </li>
+                                    <li id="type-bike">
+                                        <label for="type">Type</label>
+                                        <input type="text" id="bike-type" onblur="vehicleIsRequired('type-bike')" onchange="removeVehicleError('type-bike')">
+                                    </li>
+                                    <li>
+                                        <label>Color</label>
+                                        <select id="bike-color">
+                                            <option value="black">Black</option>
+                                            <option value="white">White</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="red">Red</option>
+                                            <option value="yellow">Yellow</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <label for="accesories">Accesories</label>
+                                        <ul id="bike-accesories" onchange=" removeVehicleError('bike-accesories')">
+                                            <li>
+                                                <input type="checkbox" id="basket">
+                                                <label>Basket</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="lantern">
+                                                <label>Lantern</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="lock" onmouseout="validateAccesories('bike-accesories')">
+                                                <label>Lock</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                </form>
+                            </section>
                         </li>
                         <li>
-                            <input type="checkbox" id="motorcycle" name="motorcycle" value="motorcycle">
+                            <input type="checkbox" id="motorcycle" name="motorcycle" value="motorcycle" onclick="showHiddenSection('motorcycle-section')">
                             <label for="motorcycle">I have a Motorcycle</label>
+                            <section class="container" id="motorcycle-section" style="display: none;">
+                                <form id="motorcycle-form">
+                                <ul class="flex-outer">
+                                    <li id="make-motor">
+                                        <label for="make">Make</label>
+                                        <textarea rows="4" id="motorcycle-make" placeholder="Enter your preferences here"
+                                        onblur="vehicleIsRequired('make-motor')" onchange="removeVehicleError('make-motor')"></textarea>
+                                    </li>
+                                    <li>
+                                        <label for="model">Model</label>
+                                        <input type="text" id="motorcycle-model">
+                                    </li>
+                                    <li>
+                                        <label>Color</label>
+                                        <select id="bike-color">
+                                            <option value="black">Black</option>
+                                            <option value="white">White</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="red">Red</option>
+                                            <option value="yellow">Yellow</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <label for="type">Type</label>
+                                        <ul id="type-moto">
+                                            <li>
+                                                <input type="radio" name="mc-type[]" checked="checked">
+                                                <label>City</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio"name="mc-type[]">
+                                                <label>Road</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="mc-type[]">
+                                                <label>All-Terrain</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </form>
+                            </section>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <label for="comments">Comments</label>
-                    <textarea rows="6" id="comments" placeholder="Enter your comments here" onblur="requeridos('comments'); commentMax()" onchange="borrarLista()"></textarea>
+                    <textarea rows="6" id="comments" placeholder="Enter your comments here" 
+                    onblur="requeridos('comments'); commentMax(); validateAll();" onchange="borrarLista()" 
+                    onfocus="validateVehicle();" ></textarea>
                 </li>
                 <li class="error-list hidden">
                     <label>Error</label>
@@ -75,7 +190,7 @@
                     </ul>
                 </li>
                 <li>
-                    <button type="submit">Submit</button>
+                    <button type="button" id="mySubmit" disabled>Submit</button>
                 </li>
             </ul>
         </fieldset>

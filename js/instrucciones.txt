@@ -1,0 +1,18 @@
+- Vehicle is now required
+- Create a new form for each Vehicle option, if a vehicle is selected show its corresponding form
+- Create error element next to the input (position and style up to you)
+Car
+  Make: string, required
+  Model: string
+  Color: Select 5 options, required
+   Doors: Int, more than 1 less than 6 required
+Bike
+  Make: string, required
+  Type: string, required
+  Color:: Select 5 options,
+  Accesories: Checkbox, 3 accesories, required
+Motorcycle
+  Make: string, required
+  Model: string
+  Color:  Select 5 options
+  Type: Radio <City, Road, All-Terrain>, required

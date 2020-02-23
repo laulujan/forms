@@ -1,8 +1,14 @@
+
 body {
     font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
     background: #ababab;
     color: #000;
     padding: 50px 0;
+}
+
+#errornuevo{
+    font: normal 12px;
+    color: #e41010;
 }
 
 #exercise,
